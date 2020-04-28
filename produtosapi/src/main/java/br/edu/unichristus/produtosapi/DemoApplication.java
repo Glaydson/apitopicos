@@ -41,15 +41,20 @@ public class DemoApplication implements CommandLineRunner {
 				"Controle de vídeo game padrão com dois botões", 4.6,
 				"https://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png");
 
+		Produto furadeira = new Produto("Furadeira", "GMG-0055", LocalDate.of(2016, 10, 15), 27.95,
+				"Furadeira de impacto", 3.5,
+				"https://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png");
+
 		controladorProdutos.salvar(ancinho);
 		controladorProdutos.salvar(carrinhoJardim);
 		controladorProdutos.salvar(martelo);
 		controladorProdutos.salvar(serra);
 		controladorProdutos.salvar(controle);
+		controladorProdutos.salvar(furadeira);
 
 		List<Produto> produtos = controladorProdutos.buscarTodos();
 		System.out.println("LISTA DE PRODUTOS");
-		for (Produto p: produtos) {
+		for (Produto p : produtos) {
 			System.out.println(p);
 		}
 

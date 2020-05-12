@@ -11,8 +11,8 @@ public class ProdutoService {
 	@Autowired
 	private ProdutosRepository repo;
 
-	public void salvar(Produto p) {
-		this.repo.save(p);
+	public Produto salvar(Produto p) {
+		return this.repo.save(p);
 	}
 
 	public Produto buscarPeloID(String id) {
@@ -25,5 +25,9 @@ public class ProdutoService {
 
 	public void removerTodos() {
 		this.repo.deleteAll();
+	}
+
+	public void remover(String id) {
+		this.repo.deleteById(id);
 	}
 }

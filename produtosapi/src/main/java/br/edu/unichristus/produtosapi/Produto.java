@@ -57,6 +57,10 @@ public class Produto {
 				+ ", urlImagem=" + urlImagem + "]";
 	}
 
+	public String getId() {
+		return this.id;
+	}
+
 	
 
 }

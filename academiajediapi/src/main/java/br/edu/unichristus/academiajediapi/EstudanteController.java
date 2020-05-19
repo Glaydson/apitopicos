@@ -43,8 +43,8 @@ public class EstudanteController {
     @PostMapping("/novo")
     public ResponseEntity<Object> salvarProduto(@RequestBody Estudante estudante) {
         Estudante estudanteSalvo = servicoEstudantes.salvar(estudante);
-        URI local = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(produtoSalvo.getId())
-                .toUri();
+        URI local = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(estudanteSalvo.getId()).toUri();
         return ResponseEntity.created(local).build();
     }
 

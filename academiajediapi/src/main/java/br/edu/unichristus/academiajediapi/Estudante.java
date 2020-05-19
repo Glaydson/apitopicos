@@ -60,4 +60,8 @@ public class Estudante {
                 + ", sexo=" + sexo + ", url=" + url + "]";
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }

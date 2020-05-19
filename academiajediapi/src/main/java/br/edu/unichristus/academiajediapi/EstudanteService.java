@@ -11,8 +11,8 @@ public class EstudanteService {
     @Autowired
     private EstudanteRepository repo;
 
-    public void salvar(Estudante e) {
-        this.repo.save(e);
+    public Estudante salvar(Estudante e) {
+        return this.repo.save(e);
     }
 
     public List<Estudante> buscarTodos() {
@@ -25,5 +25,9 @@ public class EstudanteService {
 
     public void removerTodos() {
         this.repo.deleteAll();
+    }
+
+    public void remover(String id) {
+        this.repo.deleteById(id);
     }
 }

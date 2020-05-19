@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,9 +49,17 @@ public class ProdutoController {
 	public ResponseEntity<Object> salvarProduto(@RequestBody Produto produto) {
 		System.out.println(produto);
 		Produto produtoSalvo = servicoProdutos.salvar(produto);
-		URI local = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(produtoSalvo.getId()).toUri();		
+		URI local = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(produtoSalvo.getId())
+				.toUri();
 		return ResponseEntity.created(local).build();
+	}
+
+	@PutMapping("/atualiza/{id}")
+	public ResponseEntity<Object> atualizaProduto(@RequestBody Produto produto, @PathVariable String id) {
+		// Produto produtoBD = servicoProdutos.buscarPeloID(id);
+		produto.setId(id);
+		servicoProdutos.salvar(produto);
+		return ResponseEntity.noContent().build();
 	}
 
 	public void salvar(Produto produto) {
